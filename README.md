@@ -1,2 +1,2 @@
-# HobbyWorld1
-Task for exam at SoftUni JS Angular
+# HobbyWorld
+Project for exam at SoftUni Angular

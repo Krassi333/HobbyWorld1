@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "hobbyworld-93522"
+  },
+  "targets": {
+    "hobbyworld-93522": {
+      "hosting": {
+        "HobbyWorld": [
+          "hobbyworld-93522"
+        ]
+      }
+    }
+  }
+}
