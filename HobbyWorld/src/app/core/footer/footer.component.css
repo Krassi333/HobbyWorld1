@@ -1,0 +1,22 @@
+/* footer  */
+
+footer {
+    background: #515358;
+    margin-top: 1em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color:white;
+    
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    text-align: center;
+}
+
+footer span {
+    font-size: 2em;
+}
