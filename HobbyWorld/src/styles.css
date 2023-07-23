@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+main {
+    padding-bottom: 5em;
+}
+
+body {
+    background-color:whitesmoke;
+    background-position: 20% 82%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+html {
+    font-family: 'Alegreya', serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    background: url(https://www.alconsaudio.com/wp-content/uploads/2019/11/alcons-audio-maninder-chatha-home-cinema-1.jpg) rgba(7, 1, 31, 0.473);
+    background-size: cover;
+    background-blend-mode: overlay;
+}
+
+body{
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210920/pngtree-cloud-art-candy-color-pastel-background-image_903184.png");
+}
+
+body {
+    position: relative;
+    height: 100vh;
+
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+
+
+
+.notifications {
+    /* display:none; */
+    margin: 2em;
+    padding: 1em;
+    position: absolute;
+    right: 0;
+    width: 20em;
+    border: 2px solid;
+    border-image-slice: 1;
+    border-radius: 1em;
+    color: white;
+}
+
+.success {
+    border-color: green;
+    background-color: rgba(4, 88, 4, 0.719);
+}
+
+.error {
+    background-color: rgba(245, 58, 136, 0.568);
+    border-color: rgba(255, 0, 0, 0.315);
+}
+
+.loading {
+    border-color: rgba(8, 144, 255, 0.973);
+    background-color: rgba(1, 73, 133, 0.973);
+}
+
+.btn {
+    /* border: 2px solid black; */
+    border-radius: 0.3em;
+    padding: 0.1em 0.3em;
+    color: black;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.568);
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.329);
+    color: white;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.snackBarError{
+    background-color: red !important;
+}
+
+.pointer{
+    cursor: pointer;
+}
