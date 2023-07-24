@@ -1,25 +1,24 @@
-
 <nav>
-    <!-- Do not forget to change the path to the image -->
-    <img src="../../../favicon.ico" alt="logo">
+  <!-- Do not forget to change the path to the image -->
+  <img src="../../../favicon.ico" alt="logo">
 
-    <ul class="menu">
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/features/catalog">All Posts</a></li>
-        <!-- Logged users -->
-       <div *ngIf="isLoggedIn">
-        <li><a routerLink="/features/create">Create Post</a></li>
-        <li><a routerLink="auth/myProfile">Profile of {{username}} </a></li>
-        <li><a (click)="logout()">Logout</a></li>
-       </div>
-        
-        <!-- Guest users -->
-      <div *ngIf="!isLoggedIn">
-        <li><a routerLink ="/auth/login">Login</a></li>
-        <li><a routerLink ="/auth/register">Register</a></li>
-      </div>
-        
-      
-    </ul>
+  <ul class="menu">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/features/catalog">All Posts</a></li>
+    <!-- Logged users -->
+    <div *ngIf="isLoggedIn">
+      <li><a routerLink="/features/create">Create Post</a></li>
+      <li><a routerLink="/auth/myProfile">Profile of {{username}} </a></li>
+      <li ><a (click)="logout()">Logout</a></li>
+    </div>
+
+    <!-- Guest users -->
+    <div *ngIf="!isLoggedIn">
+      <li><a routerLink="/auth/login">Login</a></li>
+      <li><a routerLink="/auth/register">Register</a></li>
+    </div>
+
+
+  </ul>
 
 </nav>

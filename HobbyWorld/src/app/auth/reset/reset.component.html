@@ -1,0 +1,17 @@
+<form  #sendPasswordResetCodeForm="ngForm" *ngIf="!isPasswordResetCodeSent" (ngSubmit)="onSendPasswordResetCode(sendPasswordResetCodeForm)">
+    <h2> Reset Password </h2>
+    <label for="email">Email:</label>
+    <input type="email" placeholder="Email" name="email" ngModel required="true" #email="ngModel" email>
+    <ng-container *ngIf="email.touched">
+        <p class="error" *ngIf="email.invalid && email.errors?.['required']">
+            Email is <strong>required!</strong>
+        </p>
+        <p class="error" *ngIf="email.invalid && email.errors?.['email']">
+            Invalid <strong>email!</strong>
+        </p>
+    </ng-container>
+
+    <button class="btn" type="submit" [disabled]="sendPasswordResetCodeForm.invalid">Send Password Reset Email</button>
+        
+    
+</form>
