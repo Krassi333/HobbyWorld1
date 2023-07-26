@@ -1,10 +1,9 @@
-import { Component, ContentChildren, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth-service.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpHeaders } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-register',
@@ -31,30 +30,15 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private router: Router,
-    private matSnackBar: MatSnackBar,
-    private cookie:CookieService) { }
+    private matSnackBar: MatSnackBar) { }
 
   onSubmit() {
- 
-    this.authService.register(this.registerForm.value).subscribe(
-      (response: any) => {
-        this.cookie.set('token',response.idToken);
-        this.registerForm.reset();
-        this.router.navigate(['/']);
-      },
-      (err: any) => {
-        const errorMessage = "Register failed - " + err.error.error.message;
+    console.log(this.registerForm.value);
 
-        this.matSnackBar.open(errorMessage, "OK", {
-          verticalPosition: "top",
-          horizontalPosition: "center",
-          panelClass: 'snackBarError'
-        });
-      });
-
-      
-
-   }
+    this.authService.register(this.registerForm.value.email,
+      this.registerForm.value.password,
+      this.registerForm.value.username)
+  }
 }
 
 
