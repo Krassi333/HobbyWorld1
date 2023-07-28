@@ -1,0 +1,26 @@
+<section id="detailsPage">
+    <div class="details">
+        <div class="animalPic">
+            <img src="{{post.imageUrl}}">
+        </div>
+        <div>
+            <div class="animalInfo">
+                <h1> {{post.title}}</h1>
+                <h3>Category:{{post.category}} </h3>
+                <textarea>{{post.description}}</textarea>
+            </div>
+
+            <div *ngIf="isOwner" class="actionBtn">
+
+                <a [routerLink]="['/features/edit/',postId]" class="edit">Edit</a>
+                <a (click)="deletePost(postId)" class="remove">Delete</a>
+            </div>
+<div>
+    
+</div>
+            <a *ngIf="post.isForSale" href="#" class="donate">Buy</a>
+            <a  href="#" class="donate">Like</a>
+
+        </div>
+    </div>
+</section>
