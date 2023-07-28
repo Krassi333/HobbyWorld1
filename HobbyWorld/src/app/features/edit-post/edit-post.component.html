@@ -1,0 +1,76 @@
+<section id="editPage">
+    <form class="editForm" #form="ngForm" (submit)="onSubmit(form)">
+
+        <div>
+            <h2>Edit Post</h2>
+            <div class="title">
+                <label for="title">Title:</label>
+                <input name="title" id="title" type="text" [(ngModel)]="post.title" #inputTitle="ngModel" required
+                    minlength="3">
+            </div>
+
+            <ng-container class="error" *ngIf="form.touched">
+                <p class="error" *ngIf="inputTitle.errors?.['required']">
+                    Title is <strong>required!</strong>
+                </p>
+                <p class="error" *ngIf="inputTitle.errors?.['minlength']">
+                    Title must be <strong>at least 3</strong> characters long!
+                </p>
+            </ng-container>
+
+            <div class="imageUrl">
+                <label for="imageUrl">Image:</label>
+                <input name="imageUrl" id="imageUrl" type="text" [(ngModel)]="post.imageUrl" #inputImageUrl="ngModel"
+                    required minlength="10">
+            </div>
+
+            <ng-container class="error" *ngIf="form.touched">
+                <p class="error" *ngIf="inputImageUrl.errors?.['required']">
+                    Image is <strong>required!</strong>
+                </p>
+                <p class="error" *ngIf="inputImageUrl.errors?.['minlength']">
+                    <strong>Invalid</strong> image url!
+                </p>
+            </ng-container>
+
+            
+            <p>Category:</p>
+            <mat-chip-listbox aria-label="Category" name="category" id="category" ngModel #inputCategory="ngModel"
+                required >
+                <mat-chip-option [selected]="post.category=='Cars'">Cars</mat-chip-option>
+                <mat-chip-option [selected]="post.category=='Trains'">Trains</mat-chip-option>
+                <mat-chip-option [selected]="post.category=='Planes'">Planes</mat-chip-option>
+                <mat-chip-option [selected]="post.category=='Ships'">Ships</mat-chip-option>
+                <mat-chip-option [selected]="post.category=='Other'">Other</mat-chip-option>
+            </mat-chip-listbox>
+
+            <ng-container class="error" >
+                <p class="error" *ngIf="inputCategory.errors?.['required']">
+                    Category is <strong>required!</strong>
+                </p>
+            </ng-container>
+
+            <div class="description">
+                <label for="description">Description:</label>
+                <input name="description" id="description" type="text" #inputCategory="ngModel" required minlength="5"
+                    [(ngModel)]="post.description">
+            </div>
+            <ng-container class="error" *ngIf="form.touched">
+                <p class="error" *ngIf="inputCategory.errors?.['required']">
+                    Description is <strong>required!</strong>
+                </p>
+                <p class="error" *ngIf="inputCategory.errors?.['minlength']">
+                    Description must be <strong>at least 3</strong> characters long!
+                </p>
+            </ng-container>
+
+            <div>
+                <input type="checkbox" id="isForSale" name="isForSale" [(ngModel)]="post.isForSale"
+                    #inputIsForSale="ngModel" [checked]="post.isForSale" />
+                <label for="isForSale">Do you want to sell this item?</label>
+            </div>
+
+            <button class="btn" type="submit" [disabled]="form.invalid">Edit Post</button>
+        </div>
+    </form>
+</section>
