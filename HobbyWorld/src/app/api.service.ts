@@ -13,10 +13,9 @@ import { Database, onValue, ref } from '@angular/fire/database';
 })
 export class ApiService {
 
-  constructor(private http:HttpClient,private database:Database) {  }
+  constructor(private http: HttpClient, private database: Database) { }
 
   getAllPosts() {
-  
     return this.http.get<IPost[]>(`https://hobbyworld-93522-default-rtdb.europe-west1.firebasedatabase.app/Posts`);
   }
 
