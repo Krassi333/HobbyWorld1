@@ -1,0 +1,62 @@
+<div class="profileInfo">
+    <div class="card-container">
+        <ng-container *ngIf="!isEditMode">
+            <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+            <h3>Username: {{userData.displayName}}</h3>
+            <h6>{{userData.email}}</h6>
+
+            <div class="buttons">
+                <button class="primary" (click)="toggleEditMode()">
+                    Edit
+                </button>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="isEditMode">
+            <form #profileEditForm="ngForm" >
+                <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" placeholder="Email" name="email" [(ngModel)]="userData.email" required="true" #email="ngModel" email>
+            
+                    <ng-container *ngIf="email.touched">
+                        <p class="error" *ngIf="email.invalid && email.errors?.['required']">
+                            Email is <strong>required!</strong>
+                        </p>
+                        <p class="error" *ngIf="email.invalid && email.errors?.['email']">
+                            Invalid <strong>email!</strong>
+                        </p>
+                    </ng-container>
+            
+                </div>
+
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="username" placeholder="Username" name="username" [(ngModel)]="userData.displayName" #password="ngModel" required="true"
+                        minlength="6">
+                </div>
+
+                <ng-container *ngIf="profileEditForm.touched">
+                    <p class="error" *ngIf="profileEditForm.invalid && profileEditForm.errors?.['required']">
+                        Username is <strong>required!</strong>
+                    </p>
+                    <p class="error" *ngIf="profileEditForm.invalid && profileEditForm.errors?.['minlength']">
+                        Username must be <strong>at least 6 characters long!</strong>
+                    </p>
+                </ng-container>
+
+                <div class="buttons">
+                    <button class="primary" (click)="onSubmit(this.profileEditForm)">
+                        Save
+                    </button>
+                    <button class="primary" (click)="toggleEditMode()">
+                        Back
+                    </button>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+
+</div>
+<app-my-posts></app-my-posts>
