@@ -40,8 +40,7 @@ export class AuthService {
 
   constructor(private http: HttpClient,
     private matSnackBar: MatSnackBar,
-    private router: Router,
-    private angularFireAuth: AngularFireAuth) {
+    private router: Router) {
 
     this.subscription = this.user$.subscribe((user) => {
       this.user = user;
@@ -58,7 +57,11 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(response.user));
         uid = response.user.uid;
 
-        writeUserData(uid, name);
+        const auth = getAuth();
+        const user = auth.currentUser;
+        updateProfile(user!, {
+          displayName: name
+        })
         this.router.navigate(['/']);
       })
       .catch((error) => {
@@ -112,7 +115,7 @@ export class AuthService {
 
   updateUser(data: object) {
     const auth = getAuth();
-    const user=auth.currentUser;
+    const user = auth.currentUser;
     updateProfile(user!, {
       ...data
     }).then(() => {
@@ -124,7 +127,7 @@ export class AuthService {
 
       this.router.navigate(['/auth/myProfile']);
     }).catch((error) => {
-      this.matSnackBar.open('There is a problem -'+error.message, "OK", {
+      this.matSnackBar.open('There is a problem -' + error.message, "OK", {
         verticalPosition: "top",
         horizontalPosition: "center",
         panelClass: "'bg-danger'"
@@ -132,7 +135,6 @@ export class AuthService {
     });
   }
 
-  
 
 
 
@@ -143,31 +145,32 @@ export class AuthService {
 
 
 
-    // getAuth()
-    // .getUser(uid)
-    // .then((userRecord) => {
-    //   // See the UserRecord reference doc for the contents of userRecord.
-    //   console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
-    // })
-    // .catch((error) => {
-    //   console.log('Error fetching user data:', error);
-    // });
-  
+
+  // getAuth()
+  // .getUser(uid)
+  // .then((userRecord) => {
+  //   // See the UserRecord reference doc for the contents of userRecord.
+  //   console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
+  // })
+  // .catch((error) => {
+  //   console.log('Error fetching user data:', error);
+  // });
 
 
 
-logout() {
-  const auth = getAuth();
-  signOut(auth).then(() => {
-    this.router.navigate(['/']);
-    localStorage.removeItem('user');
-  }).catch((error) => {
-    const errorMessage = "Logout failed - " + error.message;
-    this.matSnackBar.open(errorMessage, "OK", {
-      verticalPosition: "top",
-      horizontalPosition: "center",
-      panelClass: "'bg-danger'"
+
+  logout() {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      this.router.navigate(['/']);
+      localStorage.removeItem('user');
+    }).catch((error) => {
+      const errorMessage = "Logout failed - " + error.message;
+      this.matSnackBar.open(errorMessage, "OK", {
+        verticalPosition: "top",
+        horizontalPosition: "center",
+        panelClass: "'bg-danger'"
+      });
     });
-  });
-}
+  }
 }

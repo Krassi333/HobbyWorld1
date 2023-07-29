@@ -7,6 +7,11 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
+
 
 
 
@@ -21,7 +26,9 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     CommonModule,
     SharedModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MatChipsModule,
+    MatSnackBarModule
   ],
   exports:[
     CatalogComponent,

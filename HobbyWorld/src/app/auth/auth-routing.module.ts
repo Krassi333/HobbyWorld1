@@ -16,7 +16,6 @@ const routes: Routes = [
     {
         path: 'register',
         title:'HobbyWorld-Register Page',
-
         component: RegisterComponent,
         //canActivate: [AuthActivate]
     },
@@ -25,12 +24,11 @@ const routes: Routes = [
         title:'HobbyWorld-My profile',
 
         component: ProfileComponent,
-        //canActivate: [AuthActivate]
+        canActivate: [AuthActivate]
     },
     {
         path: 'reset',
         title:'HobbyWorld-Reset Password',
-
         component: ResetComponent,
         //canActivate: [AuthActivate]
     },

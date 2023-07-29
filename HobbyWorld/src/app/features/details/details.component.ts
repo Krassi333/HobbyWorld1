@@ -55,4 +55,11 @@ export class DetailsComponent implements OnInit {
 
     })
   }
+
+  onLike(){
+    // this.likeIsShown = !this.likeIsShown;
+    // this.likeButtonTitle = this.likeIsShown ? 'Like' : 'You already liked!';
+
+    
+  }
 }

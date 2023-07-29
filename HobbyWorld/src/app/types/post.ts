@@ -8,7 +8,7 @@ export interface IPost {
     imageUrl: string,
     isForSale: string,
     category: string,
-    owner: IUser,
+    ownerId: string,
    
 }
 

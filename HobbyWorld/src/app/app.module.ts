@@ -23,6 +23,9 @@ import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AppInterceptorProvider } from './app.interceptor';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './auth/auth-service.service';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 
 
 @NgModule({
@@ -49,13 +52,16 @@ import { CookieService } from 'ngx-cookie-service';
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
   ],
   providers: [
     ScreenTrackingService,
     UserTrackingService,
     AppInterceptorProvider,
-    CookieService
+    CookieService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

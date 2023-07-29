@@ -1,9 +1,9 @@
-
 <div class="welcome">
     <h3>Welcome to Hobby World!</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente vitae quidem facilis recusandae iusto velit dolore totam repellendus consectetur perspiciatis soluta omnis, maiores minus iste vel voluptatem quo, aut dicta!
+    <p>Most people have a primary hobby which falls outside of their professional lives. This is a place for people , where you can share your passion with your friends
+        and family.
     </p>
-    <div class="logged" >
+    <div class="logged">
         <ul *ngIf="!isLoggedIn">
             <li>
                 <a routerLink="/auth/login">
@@ -17,19 +17,28 @@
             </li>
         </ul>
 
-       
-    </div>
-</div>   
-<div class="row">
-    <div class="column">
-      <img src="../../assets/images/51ax2sk5vqL.jpg" alt="Snow" style="width:100%">
-    </div>
-    <div class="column">
-      <img src="../../assets/images/51ax2sk5vqL.jpg" alt="Forest" style="width:100%">
-    </div>
-    <div class="column">
-      <img src="../../assets/images/97402.jpg" alt="Mountains" style="width:100%">
-    </div>
-  </div> 
 
+    </div>
+</div>
 
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../assets/images/80036_43110-adfla053.jpg" class="d-block w-20" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../../assets/images/51ax2sk5vqL.jpg" class="d-block w-20" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../../assets/images/Confection-Wooden-Handmade-Ship-Model-A-33cm-600x600.jpg" class="d-block w-20" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>

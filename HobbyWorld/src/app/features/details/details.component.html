@@ -18,8 +18,8 @@
 <div>
     
 </div>
-            <a *ngIf="post.isForSale" href="#" class="donate">Buy</a>
-            <a  href="#" class="donate">Like</a>
+            <a *ngIf="post.isForSale" class="donate">Buy</a>
+            <a class="donate" (click)="onLike()">Like</a>
 
         </div>
     </div>

@@ -33,12 +33,8 @@ export class CatalogComponent implements OnInit {
           this.isLoading = false;
           console.log('Error: ' + err);
         }
-      }
-      )
-
-    
+      })
   }
-
 
 }
 

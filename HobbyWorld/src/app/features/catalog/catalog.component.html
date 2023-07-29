@@ -15,7 +15,8 @@
                 <p><span>Category: </span>{{post[1].category}}</p>
                 <p><span>Likes: </span>{{post[1].likes}}</p>
             </div>
-            <button> <a [routerLink]="['/features/details/',post[0]]" class="btn btn-primary"> Details</a></button>
+            <a [routerLink]="['/features/details/',post[0]]" class="btn-details"> Details</a>
+
         </div>
     </div>
 
