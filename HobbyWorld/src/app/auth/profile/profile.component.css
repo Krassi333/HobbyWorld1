@@ -1,14 +1,20 @@
 body{
     margin-top:20px;
     background:#eee;
+    
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
 /* My Account */
 .payments-item img.mr-3 {
-    width: 47px;
+    width: 30px;
 }
 .order-list .btn {
     border-radius: 2px;
-    min-width: 121px;
+    min-width: 100px;
     font-size: 13px;
     padding: 7px 0 7px 0;
 }
@@ -93,7 +99,7 @@ body{
 .order-list img.mr-4 {
     width: 70px;
     height: 70px;
-    object-fit: cover;
+    
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
     border-radius: 2px;
 }

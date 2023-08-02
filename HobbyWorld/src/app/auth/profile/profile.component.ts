@@ -15,28 +15,14 @@ export class ProfileComponent implements OnInit {
 
   isEditMode: boolean = false;
   userData: any;
-  email: string = '';
-username: string = '';
 
   constructor(private afAuth: AngularFireAuth,
     private authService: AuthService) { }
 
   ngOnInit() {
      this.userData=this.authService.getUserData();
-     console.log(this.userData);
+     //console.log(this.userData);
      
-     //this.email = userData?.email;
-    
-    // this.authService.getUsername().then((snapshot) => {
-    //   if (snapshot.exists()) {
-    //     this.username = snapshot.val().username;
-    //     return '';
-    //   } else {
-    //     return "No data available";
-    //   }
-    // }).catch((error) => {
-    //   console.error(error);
-    // });
  
   }
 

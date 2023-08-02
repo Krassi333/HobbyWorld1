@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { getAuth } from 'firebase/auth';
+import { map } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { IPost } from 'src/app/types/post';
 
@@ -10,24 +12,16 @@ import { IPost } from 'src/app/types/post';
 export class MyPostsComponent implements OnInit {
   postsList: [string, IPost][]=[];
   isLoading: boolean = true;
+  userId:string='';
 
   constructor(private apiService: ApiService) {
-
+    const auth = getAuth();
+    this.userId= auth.currentUser!.uid;
   }
   ngOnInit(): void {
-    this.apiService.getAllPosts()
-      .subscribe(
-        {
-          next: (posts) => {
-            //console.log(posts);
-            this.postsList = Object.entries(posts);
-            this.isLoading = false;
-          },
-          error: (err) => {
-            this.isLoading = false;
-            console.log('Error: ' + err);
-          }
-        }
-      )
-  }
+
+    console.log(this.apiService.getMyPosts());
+    
+      
+}
 }

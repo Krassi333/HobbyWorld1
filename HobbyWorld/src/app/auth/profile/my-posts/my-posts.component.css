@@ -1,5 +1,12 @@
 main {
-    padding-top: 30px;
+    padding-top: 70px;
+    background-color: #e1ddd2;
+    float:left; 
+}
+.models-catalog{
+    display:block;
+    width: auto;
+
 }
 
 .models-catalog h1 {
