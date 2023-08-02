@@ -17,6 +17,7 @@ import { AppCheckModule } from '@angular/fire/app-check';
 import { AppModule } from '../app.module';
 import { LoadingComponent } from '../shared/loading/loading.component';
 import { SharedModule } from '../shared/shared.module';
+import { LikedPostsComponent } from './profile/liked-posts/liked-posts.component';
 
 
 
@@ -30,6 +31,7 @@ import { SharedModule } from '../shared/shared.module';
     ProfileComponent,
     MyPostsComponent,
     ResetComponent,
+    LikedPostsComponent,
   ],
   imports: [
     CommonModule,

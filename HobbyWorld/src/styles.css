@@ -22,8 +22,7 @@ html {
     font-family: 'Alegreya', serif;
     font-size: 16px;
     box-sizing: border-box;
-    background: url(https://www.alconsaudio.com/wp-content/uploads/2019/11/alcons-audio-maninder-chatha-home-cinema-1.jpg) rgba(7, 1, 31, 0.473);
-    background-size: cover;
+  
     background-blend-mode: overlay;
 }
 
@@ -82,19 +81,12 @@ body {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.568);
 }
 
-.btn:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.329);
-    color: white;
-}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
-.snackBarError{
-    background-color: red !important;
-}
+
 
 .pointer{
     cursor: pointer;
