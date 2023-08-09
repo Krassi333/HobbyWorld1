@@ -1,27 +1,77 @@
-# HobbyWorld
+Angular-Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+"Hobby World" is a place , where any hobbyist modeler can draw inspiration.You can add some new creations that you have created. Authenticated users can like and buy products in the app. Sellers can use the platform to add, update and delete products from their profile page.
 
-## Development server
+The "Hobby World" application contains the following views: login page, registration page,  personal profile page, catalog page and details page.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The front end of the project has been deploy in Firebase: https://amugurumiusers.web.app
 
-## Code scaffolding
+Short description
+This project was bootstrapped with [Angular]...).
+Single Page App (SPA) - Angular.
+Usage
+npm i
+ng s
+email - mimi@abv.bg
+password - 123456
+Languages and libraries used
+Angular
+Javascript
+HTML/CSS
+Bootstrap
+Firebase
+Architecture - the project is structured
+src folder contains the whole project.
+public folder contains global asssets for the app(including the json file for simulating Web API calls).
+src folder contains the app, index.html, styles.css, environments and folders for the components, modules, app.interceptor.ts,routing.module and service.
+components folder - properly named folder for each component that includes the component itself, the css for the component).
+app folder - contains c...
+core folder - contains c...
+product folder - contains c...
+shared folder - contains c...
+types folder - contains c...
+user folder - contains c...
+Routes views
+Home Page
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Register Page
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+Login Page
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+Profile Page
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+Catalog Guest Page
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Catalog Profile Page
+
+
+Create Page and Validation
+ 
+
+Edit Page
+
+
+Delete Product
+
+
+Owner Details Page
+
+
+Details Comment Page.jpg
+
+
+Details Page Comment
+ 
+
+Details Page Add Comment
+
+
+Details Page Like Product
+
+
+PageNotFound
