@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, updateProfile, updateEmail } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { getDatabase, ref, set, child, get } from "firebase/database";
 
@@ -61,7 +61,8 @@ export class AuthService {
         const user = auth.currentUser;
         updateProfile(user!, {
           displayName: name
-        })
+        });
+        this.writeUserData(uid);
         this.router.navigate(['/']);
       })
       .catch((error) => {
@@ -74,11 +75,17 @@ export class AuthService {
       });
 
 
-    function writeUserData(userId: string, name: string) {
-      const db = getDatabase();
-      set(ref(db, 'users/' + userId), {
-        username: name
 
+  }
+
+
+  writeUserData(userId: string, data?: {}) {
+    const db = getDatabase();
+    if (data) {
+      return set(ref(db, 'users/' + userId), data);
+    } else {
+      return set(ref(db, 'users/' + userId), {
+        likedPosts: []
       });
     }
 
@@ -113,7 +120,7 @@ export class AuthService {
     return auth.currentUser;
   }
 
-  updateUser(data: object) {
+  update_User(data: object) {
     const auth = getAuth();
     const user = auth.currentUser;
     updateProfile(user!, {
@@ -135,14 +142,24 @@ export class AuthService {
     });
   }
 
-
-
-
-
-
-
-
-
+  likePost(data: {}) {
+    const auth = getAuth();
+    const user = auth.currentUser?.uid;
+    this.writeUserData(user!, data).then(() => {
+        this.matSnackBar.open('You liked the post', "OK", {
+          verticalPosition: "top",
+          horizontalPosition: "center",
+          panelClass: "'bg-success'"
+        });
+  
+      }).catch((error) => {
+        this.matSnackBar.open('There is a problem -' + error.message, "OK", {
+          verticalPosition: "top",
+          horizontalPosition: "center",
+          panelClass: "'bg-danger'"
+        });
+     });
+  }
 
 
 
