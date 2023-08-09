@@ -1,20 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { getDatabase, ref, update, orderByChild, equalTo } from "firebase/database";
-import {
-  Firestore, getFirestore,
-  collection, addDoc, collectionData,
-  doc, updateDoc, deleteDoc, getDoc,
-  getDocs, query, where
-} from '@angular/fire/firestore'; 
-import { environment } from 'src/environments/environment';
+import { getDatabase, ref, update} from "firebase/database";
+import {  Firestore} from '@angular/fire/firestore'; 
 import { IPost } from './types/post';
-
-import { getAuth } from 'firebase/auth';
-
-
-
-//const {apiUrl}=environment.firebase.databaseURL;
 
 @Injectable({
   providedIn: 'root'
@@ -51,26 +39,8 @@ export class ApiService {
     return this.http.delete(`https://hobbyworld-93522-default-rtdb.europe-west1.firebasedatabase.app/Posts/${postId}/.json`)
   }
 
-  async getMyPosts() {
-    const productsList:any=[];
-    
-    const db = getDatabase();
-const auth = getAuth();
-const userId = auth.currentUser!.uid;
-const collectionInstance = collection(this.firestore, 'products');
-
-
-const q = query(collectionInstance, where("ownerId", "==", userId));
-console.log(q)
-try {
-  const querySnapshot = await getDocs(q);
-  const productsQ = querySnapshot.docs.map((doc) => doc.data() as IPost[]);
-  console.log(productsQ);
-  productsList.push(...productsQ);
-
-} catch (e) {
-  console.error("Error getting products: ", e);
-}
-return productsList;
-}
+  getLikedPosts(uid:string){
+    return  this.http.get(`https://hobbyworld-93522-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`);
+  }
+ 
 }

@@ -1,29 +1,11 @@
 <section class="models-catalog">
-    <h1><span>My Posts</span> </h1>
+    <h1><span>Liked Posts</span> </h1>
 
     <div *ngIf isLoading>
         <app-loading></app-loading>
     </div>
     
-    <div  *ngIf="postsList.length !=0  && !isLoading" class="models-list">
-        <div *ngFor="let post of postsList " class="model">
-            <div class="model-img">
-                <img src="{{post[1].imageUrl}}">
-            </div>
-            <div class="model-info">
-                <h1>{{post[1].title}}</h1>
-                <p><span>Category: </span>{{post[1].category}}</p>
-                <p><span>Likes: </span>{{post[1].likes}}</p>
-            </div>
-          
-            <a [routerLink]="['/features/details/',post[0]]" class="btn-details"> Details</a>
-        </div>
-    </div>
-
-  
-    <div *ngIf="postsList.length ===0 " class="no-offer">
-        <p>There are posts yet! Be the first! Add your post <a href="/features/create">here</a>!  </p>
-    </div>
+    
 
    
 </section>

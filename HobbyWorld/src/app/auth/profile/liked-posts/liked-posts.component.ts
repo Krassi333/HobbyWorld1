@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { IPost } from 'src/app/types/post';
+import { AuthService } from '../../auth-service.service';
 
 @Component({
   selector: 'app-liked-posts',
@@ -8,26 +9,42 @@ import { IPost } from 'src/app/types/post';
   styleUrls: ['./liked-posts.component.css']
 })
 export class LikedPostsComponent implements OnInit {
-  postsList: [string, IPost][]=[];
+  postsList: any;
   isLoading: boolean = true;
-
-  constructor(private apiService: ApiService) {
+  //@Input() likedPosts:any;
+  
+  constructor(private apiService: ApiService,
+    private authService:AuthService) {
 
   }
   ngOnInit(): void {
-    this.apiService.getAllPosts()
-      .subscribe(
-        {
-          next: (posts) => {
-            //console.log(posts);
-            this.postsList = Object.entries(posts);
-            this.isLoading = false;
-          },
-          error: (err) => {
-            this.isLoading = false;
-            console.log('Error: ' + err);
+   const userData=this.authService.getUserData();
+
+    this.apiService.getLikedPosts(userData!.uid).subscribe((r)=>{
+      console.log('type of r '+typeof r);
+      console.log(Object.values(r));
+      
+     const  posts = Object.values(r);
+      console.log('liked post list '+ posts);
+      
+      for(let i of posts){
+        console.log('i '+i);
+        if(i != null){
+          this.apiService.getPostById(i).subscribe((p)=>{
+          if(p != null){
+            this.postsList.push(p);
           }
+          
+        })
         }
-      )
+        
+      };
+console.log('-----------');
+
+      console.log(this.postsList);
+      
+      
+     });
+    
   }
 }
