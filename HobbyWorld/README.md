@@ -1,4 +1,4 @@
-Angular-Project
+## Angular-Project
 
 "Hobby World" is a place , where any hobbyist modeler can draw inspiration.You can add some new creations that you have created. Authenticated users can like and buy products in the app. Sellers can use the platform to add, update and delete products from their profile page.
 
@@ -6,21 +6,21 @@ The "Hobby World" application contains the following views: login page, registra
 
 The front end of the project has been deploy in Firebase: https://amugurumiusers.web.app
 
-Short description
+## Short description
 This project was bootstrapped with [Angular]...).
 Single Page App (SPA) - Angular.
-Usage
+## Usage
 npm i
 ng s
 email - mimi@abv.bg
 password - 123456
-Languages and libraries used
+## Languages and libraries used
 Angular
 Javascript
 HTML/CSS
 Bootstrap
 Firebase
-Architecture - the project is structured
+## Architecture - the project is structured
 src folder contains the whole project.
 public folder contains global asssets for the app(including the json file for simulating Web API calls).
 src folder contains the app, index.html, styles.css, environments and folders for the components, modules, app.interceptor.ts,routing.module and service.
@@ -31,7 +31,7 @@ product folder - contains c...
 shared folder - contains c...
 types folder - contains c...
 user folder - contains c...
-Routes views
+## Routes views
 Home Page
 
 
@@ -51,6 +51,8 @@ Catalog Profile Page
 
 
 Create Page and Validation
+
+
  
 
 Edit Page
