@@ -32,7 +32,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   ],
   exports:[
     CatalogComponent,
-    DetailsComponent
+    DetailsComponent,
+    CreatePostComponent,
+    EditPostComponent
   ]
 })
 export class FeaturesModule { }

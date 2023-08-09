@@ -13,16 +13,9 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { ResetComponent } from './reset/reset.component';
 import { AuthService } from './auth-service.service';
-import { AppCheckModule } from '@angular/fire/app-check';
-import { AppModule } from '../app.module';
-import { LoadingComponent } from '../shared/loading/loading.component';
 import { SharedModule } from '../shared/shared.module';
 import { LikedPostsComponent } from './profile/liked-posts/liked-posts.component';
-
-
-
-
-
+import { ApiService } from '../api.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +25,7 @@ import { LikedPostsComponent } from './profile/liked-posts/liked-posts.component
     MyPostsComponent,
     ResetComponent,
     LikedPostsComponent,
+
   ],
   imports: [
     CommonModule,
@@ -51,6 +45,6 @@ import { LikedPostsComponent } from './profile/liked-posts/liked-posts.component
     ProfileComponent,
     ResetComponent
   ],
-  providers:[AuthService]
+  providers:[AuthService,ApiService]
 })
 export class AuthModule { }

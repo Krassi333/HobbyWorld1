@@ -4,6 +4,7 @@ import { getAuth } from 'firebase/auth';
 import { ApiService } from 'src/app/api.service';
 import { IPost } from 'src/app/types/post';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/auth/auth-service.service';
 
 
 
@@ -16,25 +17,33 @@ export class DetailsComponent implements OnInit {
   post!: IPost;
   postId: string = '';
   isOwner: boolean = false;
+  likeIsShown:boolean=true;
 
   constructor(private activatedRout: ActivatedRoute,
     private apiService: ApiService,
     private matSnackBar: MatSnackBar,
-    private router: Router) {
+    private router: Router,
+    private authServise:AuthService
+    ) 
+    {
 
   }
 
   ngOnInit(): void {
     this.postId = this.activatedRout.snapshot.params['postId'];
-    //console.log(postId);
-
+  
     this.apiService.getPostById(this.postId).subscribe(post => {
       const currentUser = getAuth().currentUser!.uid;
-      // console.log(post);
 
       if (post.ownerId == currentUser) {
         this.isOwner = true;
+        this.likeIsShown=false;
+      }      
+
+      if(!this.isOwner && post.likes.includes(currentUser)){
+        this.likeIsShown=false;
       }
+
       this.post = post;
     })
   }
@@ -57,9 +66,38 @@ export class DetailsComponent implements OnInit {
   }
 
   onLike(){
-    // this.likeIsShown = !this.likeIsShown;
-    // this.likeButtonTitle = this.likeIsShown ? 'Like' : 'You already liked!';
-
+     this.likeIsShown = !this.likeIsShown;
+     const currentUser = getAuth().currentUser!.uid;
+     const userData:any=this.authServise.getUserData();
+     console.log('userData '+Object.keys(userData));
+     
+     let newList:[string]=this.post.likes;
+     newList.push(currentUser);
     
+    console.log(this.authServise.likePost({likedPosts:newList}));
+
+
+    this.apiService.updatePost(this.postId, {likes:newList}).then(() => {
+
+      this.matSnackBar.open('You liked the post!', "OK", {
+        verticalPosition: "top",
+        horizontalPosition: "center",
+        panelClass: "'bg-sucsess'"
+      });
+
+      this.router.navigate([`/features/details/${this.postId}`]);
+    })
+      .catch((error) => {
+        console.error();
+        const errorMessage = 'Error:' + error.message;
+        this.matSnackBar.open(errorMessage, "OK", {
+          verticalPosition: "top",
+          horizontalPosition: "center",
+          panelClass: "'bg-danger'"
+        });
+      });
+;
+    
+
   }
 }
