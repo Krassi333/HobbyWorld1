@@ -14,7 +14,7 @@ form h2 {
     margin: auto;
     font-size: 2em;
     text-transform: uppercase;
-    color: #f57c51;
+    color: black;
 }
 
 form div {
@@ -49,7 +49,8 @@ form button.btn {
     padding: 0.5rem;
     border: none;
     border-radius: 0.5em;
-    background-image: linear-gradient(45deg, #fdeb82, #f78fad);
+    background: url(https://hobbyland.bg/skin/frontend/default/perfectum/images/HeaderNavBG5.png) center top;
+
     font-size: 1.2rem;
     box-sizing: 2px 2px 2px black;
 }
