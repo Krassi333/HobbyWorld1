@@ -1,7 +1,7 @@
 import { IUser } from "./user";
 
 export interface IPost {
-    likes: number,
+    likes: [string],
     _id: string,
     title: string,
     description: string,
