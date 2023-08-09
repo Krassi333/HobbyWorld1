@@ -1,29 +1,31 @@
-<section class="models-catalog">
-    <h1><span>All Posts</span> </h1>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+<div class="container">
+    <div class="row clearfix">
+        <ul *ngIf="!isLoading &&  postsList.length > 0">
+            <li *ngFor="let post of postsList">
 
-    <div *ngIf isLoading>
-        <app-loading></app-loading>
+
+                <!-- [routerLink]="['product','detail',product.id]"> -->
+                <div class="card">
+                    <div class="image-container">
+                        <img [routerLink]="['/features/details/',post[0]]" src="{{post[1].imageUrl}}"
+                            class="card-img-top" alt="product image">
+                    </div>
+                    <div class="card-body">
+
+
+
+
+                        <p><b>{{post[1].title }}</b></p>
+
+                        <a [routerLink]="['/features/details/',post[0]]" class="btn btn-primary"> Details
+                                Page</a>
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+
     </div>
-    
-    <div  *ngIf="postsList.length !=0  && !isLoading" class="models-list">
-        <div *ngFor="let post of postsList " class="model">
-            <div class="model-img">
-                <img src="{{post[1].imageUrl}}">
-            </div>
-            <div class="model-info">
-                <h1>{{post[1].title}}</h1>
-                <p><span>Category: </span>{{post[1].category}}</p>
-                <p><span>Likes: </span>{{post[1].likes}}</p>
-            </div>
-            <a [routerLink]="['/features/details/',post[0]]" class="btn-details"> Details</a>
-
-        </div>
-    </div>
-
-  
-    <div *ngIf="postsList.length ===0 " class="no-offer">
-        <p>There are posts yet! Be the first! Add your post <a href="/features/create">here</a>!  </p>
-    </div>
-
-   
-</section>
+</div>
