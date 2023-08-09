@@ -3,6 +3,7 @@ import { AuthService } from '../auth-service.service';
 import { IUser } from 'src/app/types/user';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
+import { ApiService } from 'src/app/api.service';
 
 
 @Component({
@@ -15,15 +16,20 @@ export class ProfileComponent implements OnInit {
 
   isEditMode: boolean = false;
   userData: any;
+  //likedPosts: any;
 
-  constructor(private afAuth: AngularFireAuth,
+  constructor(private apiService:ApiService,
     private authService: AuthService) { }
 
   ngOnInit() {
      this.userData=this.authService.getUserData();
-     //console.log(this.userData);
+
+  
+   // this.likedPosts=this.userData.likedPosts;
+   //this.likedPosts=['test'];
+   // console.log(this.likedPosts);
+    
      
- 
   }
 
 
@@ -33,7 +39,7 @@ export class ProfileComponent implements OnInit {
 
 onSubmit(profileEditForm:NgForm){
   console.log(profileEditForm.value);
-  this.authService.updateUser(profileEditForm.value);
+  this.authService.update_User(profileEditForm.value);
   this.isEditMode = !this.isEditMode;
   
 }
