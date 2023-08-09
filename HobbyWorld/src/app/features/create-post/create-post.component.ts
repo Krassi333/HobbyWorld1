@@ -21,7 +21,7 @@ export class CreatePostComponent {
 
     const userId = getAuth().currentUser!.uid;
     
-    this.apiService.createPost({ ...form.value, likes: 0, ownerId: userId }).subscribe({
+    this.apiService.createPost({ ...form.value, likes: [''], ownerId: userId }).subscribe({
       next: (responce) => {
         console.log(responce);
         this.router.navigate(['/features/catalog']);

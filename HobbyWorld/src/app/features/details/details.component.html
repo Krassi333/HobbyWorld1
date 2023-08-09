@@ -1,13 +1,14 @@
 <section id="detailsPage">
     <div class="details">
-        <div class="animalPic">
+        <div class="pic">
             <img src="{{post.imageUrl}}">
         </div>
         <div>
             <div class="animalInfo">
                 <h1> {{post.title}}</h1>
-                <h3>Category:{{post.category}} </h3>
-                <textarea>{{post.description}}</textarea>
+                <h3><b>Category: </b>{{post.category}} </h3>
+                <p><b>Description: </b>{{post.description}}</p>
+
             </div>
 
             <div *ngIf="isOwner" class="actionBtn">
@@ -15,12 +16,14 @@
                 <a [routerLink]="['/features/edit/',postId]" class="edit">Edit</a>
                 <a (click)="deletePost(postId)" class="remove">Delete</a>
             </div>
-<div>
-    
-</div>
-            <a *ngIf="post.isForSale" class="donate">Buy</a>
-            <a class="donate" (click)="onLike()">Like</a>
+            <div *ngIf="!isOwner" class="actionBtn">
 
+
+                <a *ngIf="post.isForSale" class="like">Buy</a>
+                <a *ngIf="likeIsShown" class="like" (click)="onLike()">Like</a>
+                <p *ngIf="!likeIsShown && !isOwner" class="liked">You liked it!</p>
+            </div>
+           
         </div>
     </div>
 </section>
