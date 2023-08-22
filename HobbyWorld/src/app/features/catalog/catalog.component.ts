@@ -10,7 +10,7 @@ import { IPost } from 'src/app/types/post';
 })
 export class CatalogComponent implements OnInit {
 
-  @Input() post!: IPost;
+ // @Input() post!: IPost;
 
   postsList: [string, IPost][]=[];
   isLoading: boolean = true;
