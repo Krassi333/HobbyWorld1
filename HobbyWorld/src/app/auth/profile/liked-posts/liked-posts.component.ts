@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { IPost } from 'src/app/types/post';
 import { AuthService } from '../../auth-service.service';
+import { getAuth } from 'firebase/auth';
 
 @Component({
   selector: 'app-liked-posts',
@@ -9,8 +10,10 @@ import { AuthService } from '../../auth-service.service';
   styleUrls: ['./liked-posts.component.css']
 })
 export class LikedPostsComponent implements OnInit {
-  postsList: any;
+  postsList: any[]=[];
+  filteredPosts: any[] = [];
   isLoading: boolean = true;
+  userId:string='';
   //@Input() likedPosts:any;
   
   constructor(private apiService: ApiService,
@@ -18,33 +21,28 @@ export class LikedPostsComponent implements OnInit {
 
   }
   ngOnInit(): void {
-   const userData=this.authService.getUserData();
+    const auth = getAuth();
+    this.userId = auth.currentUser!.uid;
 
-    this.apiService.getLikedPosts(userData!.uid).subscribe((r)=>{
-      console.log('type of r '+typeof r);
-      console.log(Object.values(r));
-      
-     const  posts = Object.values(r);
-      console.log('liked post list '+ posts);
-      
-      for(let i of posts){
-        console.log('i '+i);
-        if(i != null){
-          this.apiService.getPostById(i).subscribe((p)=>{
-          if(p != null){
-            this.postsList.push(p);
-          }
+    this.apiService.getAllPosts()
+      .subscribe({
+        next: (posts) => {
+          //console.log(Object.entries(posts));
           
-        })
-        }
-        
-      };
-console.log('-----------');
-
-      console.log(this.postsList);
-      
-      
-     });
+          this.postsList = Object.entries(posts);
+          //console.log(this.postsList);
+          this.isLoading = false;
+         this.filteredPosts = this.postsList.filter(postsList => postsList[1].likes.includes(this.userId));
     
+        },
+        error: (err) => {
+          this.isLoading = false;
+          console.log('Error: ' + err);
+        }
+      });
+
+      
+      
+      
   }
 }
